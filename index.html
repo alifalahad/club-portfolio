@@ -173,6 +173,36 @@
       padding: 24px;
     }
 
+    /* ========================================================
+       ABOUT SECTION LAYOUT
+       - Two cards on desktop
+       - One column on smaller screens
+       ======================================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .info-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .info-card p {
+      color: var(--text-soft);
+    }
+
     .section-title {
       font-size: 1.8rem;
       margin-bottom: 10px;
@@ -196,6 +226,10 @@
        ======================================================== */
     @media (max-width: 900px) {
       .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
         grid-template-columns: 1fr;
       }
 
@@ -263,15 +297,35 @@
 
   <!-- ======================================================
        ABOUT SECTION
-       Short introduction about the club
+       About Event Horizon with mission and vision
        ====================================================== -->
   <section id="about">
-    <div class="container section-card">
-      <h2 class="section-title">About</h2>
-      <p class="section-text">
-        Event Horizon is a university astronomy and stargazing club where students explore the night sky,
-        learn about planets and galaxies, and share curiosity about space.
-      </p>
+    <div class="container">
+      <div class="section-card">
+        <h2 class="section-title">About Event Horizon</h2>
+        <p class="section-text">
+          Event Horizon is a university astronomy and stargazing club where students explore the night sky,
+          learn about space, and enjoy astronomy together in a simple and friendly way.
+        </p>
+
+        <div class="about-grid">
+          <div class="info-card">
+            <h3>Mission</h3>
+            <p>
+              To help students learn astronomy, build curiosity about the universe, and create fun stargazing
+              experiences on campus.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>Vision</h3>
+            <p>
+              To become a welcoming student club where anyone can explore the cosmos, share ideas, and grow a
+              lifelong interest in space.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
