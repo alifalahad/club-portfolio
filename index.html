@@ -174,6 +174,49 @@
     }
 
     /* ========================================================
+       EVENTS SECTION LAYOUT
+       - Three cards on larger screens
+       - One card per row on small screens
+       ======================================================== */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .event-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .event-date {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .event-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .event-card p {
+      color: var(--text-soft);
+    }
+
+    /* ========================================================
        ABOUT SECTION LAYOUT
        - Two cards on desktop
        - One column on smaller screens
@@ -230,6 +273,10 @@
       }
 
       .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .events-grid {
         grid-template-columns: 1fr;
       }
 
@@ -331,14 +378,43 @@
 
   <!-- ======================================================
        EVENTS SECTION
-       Placeholder content for upcoming activities
+       Three upcoming astronomy events in simple cards
        ====================================================== -->
   <section id="events">
     <div class="container section-card">
       <h2 class="section-title">Events</h2>
       <p class="section-text">
-        Upcoming telescope nights, beginner sky-mapping workshops, and special talks on astronomy.
+        Here are three upcoming events for Event Horizon members.
       </p>
+
+      <div class="events-grid">
+        <!-- Event card 1 -->
+        <article class="event-card">
+          <span class="event-date">18 June 2026</span>
+          <h3>Stargazing Night</h3>
+          <p>
+            Join us on campus for a relaxed night of telescope viewing and guided stargazing.
+          </p>
+        </article>
+
+        <!-- Event card 2 -->
+        <article class="event-card">
+          <span class="event-date">24 June 2026</span>
+          <h3>Solar Observation Workshop</h3>
+          <p>
+            Learn how to safely observe the Sun and understand basic solar features with simple tools.
+          </p>
+        </article>
+
+        <!-- Event card 3 -->
+        <article class="event-card">
+          <span class="event-date">30 June 2026</span>
+          <h3>Astronomy Quiz Competition</h3>
+          <p>
+            Test your space knowledge in a fun quiz session with beginner-friendly astronomy questions.
+          </p>
+        </article>
+      </div>
     </div>
   </section>
 
