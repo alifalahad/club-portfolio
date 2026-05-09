@@ -306,6 +306,54 @@
       color: var(--text-soft);
     }
 
+    /* ========================================================
+       CONTACT SECTION LAYOUT
+       - Simple form only for UI design
+       - No JavaScript or backend
+       ======================================================== */
+    .contact-form {
+      display: grid;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-color);
+      color: var(--text);
+      font: inherit;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(95, 184, 255, 0.18);
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      border: none;
+      cursor: pointer;
+      justify-self: start;
+    }
+
     footer {
       text-align: center;
       padding: 22px 12px;
@@ -522,14 +570,37 @@
 
   <!-- ======================================================
        CONTACT SECTION
-       Basic contact text (no backend)
+       UI-only contact form with name, email, message and submit button
        ====================================================== -->
   <section id="contact">
     <div class="container section-card">
       <h2 class="section-title">Contact</h2>
       <p class="section-text">
-        Email us at eventhorizon@university.edu for membership and event details.
+        Send us a message if you want to join Event Horizon or ask about upcoming activities.
       </p>
+
+      <form class="contact-form" action="#" method="post">
+        <!-- Name field -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required />
+        </div>
+
+        <!-- Email field -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required />
+        </div>
+
+        <!-- Message textarea -->
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn submit-btn">Submit</button>
+      </form>
     </div>
   </section>
 
@@ -537,7 +608,7 @@
        FOOTER SECTION
        ====================================================== -->
   <footer>
-    <p>Event Horizon | Astronomy and Stargazing Club</p>
+    <p>Copyright 2026 | Event Horizon | University Name</p>
   </footer>
 </body>
 </html>
