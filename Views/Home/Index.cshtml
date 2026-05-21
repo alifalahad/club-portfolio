@@ -1,0 +1,215 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Custom styles specific to the Index sections -->
+<style>
+    section {
+        padding: 90px 0;
+        scroll-margin-top: 70px;
+    }
+
+    .hero-bg {
+        background: radial-gradient(circle at top right, #1a2a59 0%, #070b19 60%);
+    }
+
+    .section-card {
+        background-color: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .event-card:hover, .team-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .btn-primary-custom {
+        background-color: var(--primary);
+        color: #041225;
+        font-weight: bold;
+        border: none;
+        transition: transform 0.2s;
+    }
+
+    .btn-primary-custom:hover {
+        background-color: #7cc9ff;
+        transform: translateY(-2px);
+    }
+
+    .team-avatar {
+        width: 80px;
+        height: 80px;
+        border: 3px solid var(--primary);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #355a9a, #101936);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        color: white;
+    }
+
+    .fade-up {
+        animation: fadeUpAnim 0.7s ease forwards;
+    }
+
+    @keyframes fadeUpAnim {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- 1. Hero Section -->
+<div id="home" class="hero-bg py-5">
+    <div class="container pt-5 pb-4">
+        <div class="row align-items-center fade-up">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold">Welcome to Event Horizon</h1>
+                <p class="lead" style="color: var(--text-soft);">Exploring the Universe Together</p>
+                <a href="#events" class="btn btn-primary-custom rounded-pill px-4 py-2 mt-3">Upcoming Events</a>
+            </div>
+            <div class="col-lg-6">
+                <!-- Astronomy placeholder image -->
+                <img src="https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=1000&q=80" 
+                     class="img-fluid rounded border shadow-lg" 
+                     style="border-color: var(--border) !important; aspect-ratio: 4/3; object-fit: cover;" 
+                     alt="Stargazing Scene" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2. About Section -->
+<section id="about">
+    <div class="container fade-up">
+        <div class="section-card p-4 p-md-5">
+            <h2 class="mb-3">About Event Horizon</h2>
+            <p style="color: var(--text-soft);">
+                Event Horizon is a university astronomy and stargazing club where students explore the night sky, 
+                learn about space, and enjoy astronomy together in a simple and friendly way.
+            </p>
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-6">
+                    <div class="p-4 rounded h-100" style="background-color: var(--bg-color); border: 1px solid var(--border);">
+                        <h4 style="color: var(--primary);">Mission</h4>
+                        <p class="mb-0" style="color: var(--text-soft);">To help students learn astronomy, build curiosity about the universe, and create fun stargazing experiences on campus.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 rounded h-100" style="background-color: var(--bg-color); border: 1px solid var(--border);">
+                        <h4 style="color: var(--primary);">Vision</h4>
+                        <p class="mb-0" style="color: var(--text-soft);">To become a welcoming student club where anyone can explore the cosmos, share ideas, and grow a lifelong interest in space.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3. Events Section -->
+<section id="events" class="hero-bg border-top border-bottom" style="border-color: var(--border) !important;">
+    <div class="container fade-up">
+        <h2 class="mb-2">Events</h2>
+        <p class="mb-4" style="color: var(--text-soft);">Here are three upcoming events for Event Horizon members.</p>
+        
+        <div class="row g-4">
+            <!-- Event 1 -->
+            <div class="col-md-4">
+                <div class="section-card event-card p-4 h-100">
+                    <div class="fw-bold mb-2" style="color: var(--primary);">18 June 2026</div>
+                    <h5>Stargazing Night</h5>
+                    <p class="mb-0" style="color: var(--text-soft);">Join us on campus for a relaxed night of telescope viewing and guided stargazing.</p>
+                </div>
+            </div>
+            <!-- Event 2 -->
+            <div class="col-md-4">
+                <div class="section-card event-card p-4 h-100">
+                    <div class="fw-bold mb-2" style="color: var(--primary);">24 June 2026</div>
+                    <h5>Solar Observation Workshop</h5>
+                    <p class="mb-0" style="color: var(--text-soft);">Learn how to safely observe the Sun and understand basic solar features with simple tools.</p>
+                </div>
+            </div>
+            <!-- Event 3 -->
+            <div class="col-md-4">
+                <div class="section-card event-card p-4 h-100">
+                    <div class="fw-bold mb-2" style="color: var(--primary);">30 June 2026</div>
+                    <h5>Astronomy Quiz Competition</h5>
+                    <p class="mb-0" style="color: var(--text-soft);">Test your space knowledge in a fun quiz session with beginner-friendly astronomy questions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Team Section -->
+<section id="team">
+    <div class="container fade-up">
+        <h2 class="mb-2">Team</h2>
+        <p class="mb-4" style="color: var(--text-soft);">Meet the executive members who organize Event Horizon activities.</p>
+
+        <div class="row g-4 text-center">
+            <div class="col-6 col-lg-3">
+                <div class="section-card team-card p-4 h-100">
+                    <div class="team-avatar mb-3">★</div>
+                    <h5 class="mb-1">Sulaiman Sagil</h5>
+                    <div class="small fw-bold" style="color: var(--primary);">President</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="section-card team-card p-4 h-100">
+                    <div class="team-avatar mb-3">☽</div>
+                    <h5 class="mb-1">Mahbub</h5>
+                    <div class="small fw-bold" style="color: var(--primary);">Vice President</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="section-card team-card p-4 h-100">
+                    <div class="team-avatar mb-3">✦</div>
+                    <h5 class="mb-1">Vondo</h5>
+                    <div class="small fw-bold" style="color: var(--primary);">Event Coordinator</div>
+                </div>
+            </div>
+            <div class="col-6 col-lg-3">
+                <div class="section-card team-card p-4 h-100">
+                    <div class="team-avatar mb-3">⚝</div>
+                    <h5 class="mb-1">Feresta</h5>
+                    <div class="small fw-bold" style="color: var(--primary);">Media Lead</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. Contact Section -->
+<section id="contact" class="hero-bg">
+    <div class="container fade-up">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-card p-4 p-md-5">
+                    <h2 class="mb-3">Contact</h2>
+                    <p style="color: var(--text-soft);">Send us a message if you want to join Event Horizon or ask about upcoming activities.</p>
+                    
+                    <form action="#" method="post" class="mt-4">
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-bold">Name</label>
+                            <input type="text" class="form-control text-light" id="name" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Your full name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-bold">Email</label>
+                            <input type="email" class="form-control text-light" id="email" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="your@email.com" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label fw-bold">Message</label>
+                            <textarea class="form-control text-light" id="message" rows="5" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Write your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom rounded-pill px-5">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
