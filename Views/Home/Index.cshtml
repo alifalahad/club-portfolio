@@ -1,3 +1,4 @@
+@model EventHorizon.Models.HomeViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -117,30 +118,23 @@
         <p class="mb-4" style="color: var(--text-soft);">Here are three upcoming events for Event Horizon members.</p>
         
         <div class="row g-4">
-            <!-- Event 1 -->
-            <div class="col-md-4">
-                <div class="section-card event-card p-4 h-100">
-                    <div class="fw-bold mb-2" style="color: var(--primary);">18 June 2026</div>
-                    <h5>Stargazing Night</h5>
-                    <p class="mb-0" style="color: var(--text-soft);">Join us on campus for a relaxed night of telescope viewing and guided stargazing.</p>
-                </div>
-            </div>
-            <!-- Event 2 -->
-            <div class="col-md-4">
-                <div class="section-card event-card p-4 h-100">
-                    <div class="fw-bold mb-2" style="color: var(--primary);">24 June 2026</div>
-                    <h5>Solar Observation Workshop</h5>
-                    <p class="mb-0" style="color: var(--text-soft);">Learn how to safely observe the Sun and understand basic solar features with simple tools.</p>
-                </div>
-            </div>
-            <!-- Event 3 -->
-            <div class="col-md-4">
-                <div class="section-card event-card p-4 h-100">
-                    <div class="fw-bold mb-2" style="color: var(--primary);">30 June 2026</div>
-                    <h5>Astronomy Quiz Competition</h5>
-                    <p class="mb-0" style="color: var(--text-soft);">Test your space knowledge in a fun quiz session with beginner-friendly astronomy questions.</p>
-                </div>
-            </div>
+            @if (Model.Events != null && Model.Events.Any())
+            {
+                foreach (var ev in Model.Events)
+                {
+                    <div class="col-md-4">
+                        <div class="section-card event-card p-4 h-100">
+                            <div class="fw-bold mb-2" style="color: var(--primary);">@ev.Date.ToString("dd MMM yyyy")</div>
+                            <h5>@ev.Title</h5>
+                            <p class="mb-0" style="color: var(--text-soft);">@ev.Description</p>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center text-muted">No upcoming events scheduled yet.</div>
+            }
         </div>
     </div>
 </section>
@@ -159,34 +153,30 @@
                     <div class="small fw-bold" style="color: var(--primary);">President</div>
                 </div>
             </div>
-            <div class="col-6 col-lg-3">
-                <div class="section-card team-card p-4 h-100">
-                    <div class="team-avatar mb-3">☽</div>
-                    <h5 class="mb-1">Mahbub</h5>
-                    <div class="small fw-bold" style="color: var(--primary);">Vice President</div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="section-card team-card p-4 h-100">
-                    <div class="team-avatar mb-3">✦</div>
-                    <h5 class="mb-1">Vondo</h5>
-                    <div class="small fw-bold" style="color: var(--primary);">Event Coordinator</div>
-                </div>
-            </div>
-            <div class="col-6 col-lg-3">
-                <div class="section-card team-card p-4 h-100">
-                    <div class="team-avatar mb-3">⚝</div>
-                    <h5 class="mb-1">Feresta</h5>
-                    <div class="small fw-bold" style="color: var(--primary);">Media Lead</div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 5. Contact Section -->
-<section id="contact" class="hero-bg">
-    <div class="container fade-up">
+            @if (Model.TeamMembers != null && Model.TeamMembers.Any())
+            {
+                foreach (var member in Model.TeamMembers)
+                {
+                    <div class="col-6 col-lg-3">
+                        <div class="section-card team-card p-4 h-100">
+                            @if (!string.IsNullOrEmpty(member.ImageUrl))
+                            {
+                                <img src="@member.ImageUrl" alt="@member.Name" class="team-avatar mb-3" style="object-fit: cover; padding: 0; border-width: 2px;" />
+                            }
+                            else
+                            {
+                                <div class="team-avatar mb-3">★</div>
+                            }
+                            <h5 class="mb-1">@member.Name</h5>
+                            <div class="small fw-bold" style="color: var(--primary);">@member.Position</div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center text-muted">No team members added yet.</div>
+            }ntainer fade-up">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="section-card p-4 p-md-5">
