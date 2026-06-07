@@ -2,32 +2,55 @@
 
 @{
     ViewData["Title"] = "Team Members";
+    var currentPresident = Model.FirstOrDefault(m => m.IsPresident);
 }
 
 <section class="py-5 mt-5">
     <div class="container">
         <h2 class="text-white mb-4">Manage Team Members</h2>
-        
+
+        <!-- Choose President Card -->
+        <div class="section-card p-4 mb-4">
+            <h5 class="mb-3" style="color: gold;">&#128081; Choose President</h5>
+            <form asp-action="SetPresident" method="post" class="d-flex align-items-center gap-3 flex-wrap">
+                <select name="memberId" class="form-select" style="background-color: var(--bg-color); border-color: var(--border); color: white; max-width: 300px;">
+                    <option value="0" style="color: var(--text-soft);">— No President —</option>
+                    @foreach (var member in Model)
+                    {
+                        <option value="@member.Id" selected="@(member.IsPresident ? "selected" : null)">@member.Name (@member.Position)</option>
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary-custom rounded-pill px-4">Set as President</button>
+                @if (currentPresident != null)
+                {
+                    <span class="text-muted small">Current: <strong style="color: gold;">&#128081; @currentPresident.Name</strong></span>
+                }
+            </form>
+        </div>
+
         <p>
             <a asp-action="Create" class="btn btn-primary-custom rounded-pill">Add New Member</a>
         </p>
         
         <div class="section-card p-4">
-            <table class="table text-light">
+            <table class="table table-dark" style="background-color: var(--surface);">
                 <thead>
                     <tr>
                         <th class="text-light">Name</th>
                         <th class="text-light">Position</th>
-                        <th class="text-light">Image URL</th>
+                        <th class="text-light">Description</th>
                         <th class="text-light">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model) {
+                    @foreach (var item in Model.OrderByDescending(m => m.IsPresident)) {
                         <tr>
-                            <td class="text-light">@item.Name</td>
+                            <td class="text-light">
+                                @if (item.IsPresident) { <span style="color:gold;" title="President">&#128081;</span> }
+                                @item.Name
+                            </td>
                             <td class="text-light">@item.Position</td>
-                            <td class="text-light text-truncate" style="max-width: 150px;">@item.ImageUrl</td>
+                            <td class="text-light text-truncate" style="max-width: 200px;">@item.Description</td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="text-info text-decoration-none">Edit</a> |
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger text-decoration-none">Delete</a>
