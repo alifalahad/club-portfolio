@@ -13,6 +13,21 @@
     .hero-bg {
         background: radial-gradient(circle at top right, #1a2a59 0%, #070b19 60%);
     }
+
+    /* Custom scrollbar for horizontal scrolling containers */
+    .overflow-auto::-webkit-scrollbar {
+        height: 8px;
+    }
+    .overflow-auto::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .overflow-auto::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+    }
+    .overflow-auto::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.4);
+    }
 </style>
 
 <!-- 1. Hero Section -->
@@ -69,13 +84,13 @@
         <h2 class="mb-2">Events</h2>
         <p class="mb-4" style="color: var(--text-soft);">Here are three upcoming events for Event Horizon members.</p>
         
-        <div class="row g-4">
+        <div class="d-flex flex-nowrap overflow-auto gap-4 pt-2 pb-4 px-2" style="scrollbar-width: thin; margin: 0 -0.5rem;">
             @if (Model.Events != null && Model.Events.Any())
             {
                 foreach (var ev in Model.Events)
                 {
-                    <div class="col-md-4">
-                        <div class="section-card event-card p-4 h-100">
+                    <div style="flex: 0 0 auto; width: 320px; max-width: 85vw;">
+                        <div class="section-card event-card p-4 h-100 text-wrap text-start">
                             <div class="fw-bold mb-2" style="color: var(--primary);">@ev.Date.ToString("dd MMM yyyy")</div>
                             <h5>@ev.Title</h5>
                             <p class="mb-0" style="color: var(--text-soft);">@ev.Description</p>
@@ -97,13 +112,13 @@
         <h2 class="mb-2">Team</h2>
         <p class="mb-4" style="color: var(--text-soft);">Meet the executive members who organize Event Horizon activities.</p>
 
-        <div class="row g-4 text-center">
+        <div class="d-flex flex-nowrap overflow-auto gap-4 pt-2 pb-4 px-2 text-center" style="scrollbar-width: thin; margin: 0 -0.5rem;">
             @if (Model.TeamMembers != null && Model.TeamMembers.Any())
             {
                 foreach (var member in Model.TeamMembers.OrderByDescending(m => m.IsPresident))
                 {
-                    <div class="col-6 col-lg-3">
-                        <div class="section-card team-card p-4 h-100" style="@(member.IsPresident ? "border-color: gold; box-shadow: 0 0 18px rgba(255,215,0,0.25);" : "")">
+                    <div style="flex: 0 0 auto; width: 250px; max-width: 75vw;">
+                        <div class="section-card team-card p-4 h-100 text-wrap" style="@(member.IsPresident ? "border-color: gold; box-shadow: 0 0 18px rgba(255,215,0,0.25);" : "")">
                             @if (member.IsPresident)
                             {
                                 <div class="mb-1" style="font-size:1.3rem;">&#128081;</div>
