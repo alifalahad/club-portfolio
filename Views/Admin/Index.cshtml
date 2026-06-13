@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<section class="py-5 mt-5">
+    <div class="container fade-up">
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <h2 class="text-white mb-0">Admin Dashboard</h2>
+            <div class="text-muted">Welcome, Admin!</div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            
+            <!-- Manage Events -->
+            <div class="col-md-4">
+                <a asp-controller="Events" asp-action="Index" class="text-decoration-none">
+                    <div class="section-card p-4 text-center h-100 event-card">
+                        <div class="mb-3" style="font-size: 3rem;">&#128197;</div>
+                        <h4 class="text-light mb-2">Manage Events</h4>
+                        <p class="text-muted mb-0">Add, edit, or remove upcoming events.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Manage Team -->
+            <div class="col-md-4">
+                <a asp-controller="TeamMembers" asp-action="Index" class="text-decoration-none">
+                    <div class="section-card p-4 text-center h-100 event-card">
+                        <div class="mb-3" style="font-size: 3rem;">&#128101;</div>
+                        <h4 class="text-light mb-2">Manage Team</h4>
+                        <p class="text-muted mb-0">Add, edit, or promote team members to President.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- View Feedback -->
+            <div class="col-md-4">
+                <a asp-controller="ContactMessages" asp-action="Index" class="text-decoration-none">
+                    <div class="section-card p-4 text-center h-100 event-card">
+                        <div class="mb-3" style="font-size: 3rem;">&#128233;</div>
+                        <h4 class="text-light mb-2">Feedback Inbox</h4>
+                        <p class="text-muted mb-0">Read messages submitted from the Contact form.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>

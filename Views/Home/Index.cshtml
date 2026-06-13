@@ -162,18 +162,18 @@
                     <h2 class="mb-3">Contact</h2>
                     <p style="color: var(--text-soft);">Send us a message if you want to join Event Horizon or ask about upcoming activities.</p>
                     
-                    <form action="#" method="post" class="mt-4">
+                    <form asp-controller="ContactMessages" asp-action="Submit" method="post" class="mt-4">
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bold">Name</label>
-                            <input type="text" class="form-control text-light" id="name" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Your full name" required>
+                            <input type="text" class="form-control text-light" id="name" name="Name" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Your full name" required>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label fw-bold">Email</label>
-                            <input type="email" class="form-control text-light" id="email" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="your@email.com" required>
+                            <input type="email" class="form-control text-light" id="email" name="Email" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="your@email.com" required>
                         </div>
                         <div class="mb-4">
                             <label for="message" class="form-label fw-bold">Message</label>
-                            <textarea class="form-control text-light" id="message" rows="5" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Write your message here..." required></textarea>
+                            <textarea class="form-control text-light" id="message" name="Message" rows="5" style="background-color: var(--bg-color); border-color: var(--border);" placeholder="Write your message here..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary-custom rounded-pill px-5">Submit</button>
                     </form>

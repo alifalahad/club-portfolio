@@ -1,10 +1,12 @@
 using EventHorizon.Data;
 using EventHorizon.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventHorizon.Controllers
 {
+    [Authorize]
     public class TeamMembersController : Controller
     {
         private readonly AppDbContext _context;

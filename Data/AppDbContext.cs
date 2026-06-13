@@ -11,5 +11,6 @@ namespace EventHorizon.Data
 
         public DbSet<Event> Events { get; set; }
         public DbSet<TeamMember> TeamMembers { get; set; }
+        public DbSet<ContactMessage> ContactMessages { get; set; }
     }
 }

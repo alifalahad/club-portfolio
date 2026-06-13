@@ -1,0 +1,39 @@
+@model EventHorizon.Models.ContactMessage
+
+@{
+    ViewData["Title"] = "Delete Message";
+}
+
+<section class="py-5 mt-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="section-card p-5">
+                    <h2 class="text-danger mb-4">Delete Message</h2>
+                    <p class="text-light fs-5">Are you sure you want to delete this message?</p>
+                    
+                    <div class="p-4 rounded mb-4" style="background-color: var(--bg-color); border: 1px solid var(--border);">
+                        <dl class="row mb-0 text-light">
+                            <dt class="col-sm-3 text-muted">From</dt>
+                            <dd class="col-sm-9 fw-bold">@Model.Name (@Model.Email)</dd>
+                            
+                            <dt class="col-sm-3 text-muted">Date</dt>
+                            <dd class="col-sm-9">@Model.SubmittedAt.ToLocalTime().ToString("dd MMM yyyy, hh:mm tt")</dd>
+                            
+                            <dt class="col-sm-3 text-muted">Message</dt>
+                            <dd class="col-sm-9 fst-italic">"@Model.Message"</dd>
+                        </dl>
+                    </div>
+                    
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-danger rounded-pill px-4">Yes, Delete</button>
+                            <a asp-action="Index" class="btn btn-outline-light rounded-pill px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

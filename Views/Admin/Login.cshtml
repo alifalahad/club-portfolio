@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<section class="py-5 mt-5">
+    <div class="container fade-up">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="section-card p-5 text-center">
+                    <div class="mb-4" style="font-size: 3rem; color: var(--primary);">&#128274;</div>
+                    <h2 class="text-white mb-2">Admin Login</h2>
+                    <p class="text-muted mb-4">Secure access to Event Horizon management.</p>
+                    
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger" style="background-color: rgba(220, 53, 69, 0.1); border-color: rgba(220, 53, 69, 0.3); color: #ff6b6b;">
+                            <div asp-validation-summary="All" class="text-start mb-0"></div>
+                        </div>
+                    }
+
+                    <form asp-action="Login" method="post" class="text-start">
+                        <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label fw-bold text-light">Username</label>
+                            <input type="text" class="form-control text-light" id="username" name="username" style="background-color: var(--bg-color); border-color: var(--border);" required autofocus>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="password" class="form-label fw-bold text-light">Password</label>
+                            <input type="password" class="form-control text-light" id="password" name="password" style="background-color: var(--bg-color); border-color: var(--border);" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary-custom rounded-pill w-100 py-2 fs-5">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
